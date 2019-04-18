@@ -8,9 +8,9 @@ switch ($act){
         require('../templates/footer.php');
     break;
     case 'login':
-        require('../templates/header.php');
+        require('templates/header.php');
         require('templates/login.php');
-        require('../templates/footer.php');
+        require('templates/footer.php');
     break;
     default:
         require('templates/header.php');
