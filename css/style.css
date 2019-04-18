@@ -1,0 +1,47 @@
+.nav_header{
+
+    line-height: 5em;
+}
+.nav_header_contacts{
+	display:inline-block;
+	font-size:20px;
+    border: 1px dotted #ccc;
+	/*background:#eff0ff;*/
+	padding:10px;
+	border-radius:10px;
+}
+.search_box{
+    padding:15px;
+    margin:10px;
+    background:#eee;
+    border-radius:5px;
+}
+.inner_container{
+    max-width:960px;
+    margin: 0 auto;
+}
+.body_box{
+
+}
+.gray_title{
+    color:#aaa;
+    font-size:12px;
+}
+.cost_value{
+    font-size:20px;
+}
+.black_bold_title{
+    font-size:12px;
+    font-weight: bold;
+}
+.item_date_block{
+    margin:10px;
+}
+.mt10{
+    margin-top:10px;
+}
+.item_button_block{
+    border-top:1px dotted #ccc;
+    padding-top:10px;
+
+}
