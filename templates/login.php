@@ -1,4 +1,4 @@
-<form class="form-signin" style="margin-top:20px;">
+<form class="form-signin" action="send.php?act=login" style="margin-top:20px;">
       <div class="text-center mb-4">
         <p style="font-size:20px;">
           Авторизация
