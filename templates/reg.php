@@ -20,18 +20,19 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
               <form class="form-signin" action="send.php?act=reg" method = "post"style="margin-top:20px;">
+                  <input type="hidden" name="user_type" value="fizFace">
             <div class="form-label-group">
-                <input type="text" id="inn_f" class="form-control" placeholder="ИНН" required autofocus>
+                <input type="text" id="inn_f" name="inn" class="form-control" placeholder="ИНН" required autofocus>
                 <label for="inn_f">ИНН</label>
             </div>
 
             <div class="form-label-group">
-                <input type="text" id="fio" class="form-control" placeholder="ФИО" required>
+                <input type="text" id="fio" name="fio" class="form-control" placeholder="ФИО" required>
                 <label for="fio">ФИО</label>
             </div>
               
             <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Адрес эл.почты" required>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Адрес эл.почты" required>
                 <label for="inputEmail">Адрес эл.почты</label>
             </div>
                   <div class="g-recaptcha" data-sitekey="6LcjCp8UAAAAAL1BXJoJXGs9pN2LyIE5QY-TBXcD"></div>
@@ -41,7 +42,8 @@
           </div>
           <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
               
-            <form class="form-signin" action="send.php?act=reg" >
+            <form class="form-signin" action="send.php?act=reg" method="post" >
+                <input type="hidden" name="user_type" value="urFace">
             <div class="form-label-group">
                 <input type="text" id="full_name" class="form-control" placeholder="Полное наименование организации" required autofocus>
                 <label for="full_name">Полное наименование организации</label>

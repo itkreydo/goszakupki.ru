@@ -13,9 +13,10 @@ switch ($act){
         require('../templates/footer.php');
     break;
     default:
-        require('../templates/header.php');
-        require('templates/main.php');
-        require('../templates/footer.php');
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/dialog.php');
+        require('templates/footer.php');
     break;
 }
 
