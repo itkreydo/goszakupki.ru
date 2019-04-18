@@ -1,4 +1,4 @@
-<form class="form-signin" style="margin-top:20px;">
+<div class="reg_container" style="margin-top:20px;">
       <div class="text-center mb-4">
         <p style="font-size:20px;">
           Регистрация
@@ -19,7 +19,7 @@
 
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
-              
+              <form class="form-signin" action="send.php?act=reg" method = "post"style="margin-top:20px;">
             <div class="form-label-group">
                 <input type="text" id="inn_f" class="form-control" placeholder="ИНН" required autofocus>
                 <label for="inn_f">ИНН</label>
@@ -34,11 +34,14 @@
                 <input type="email" id="inputEmail" class="form-control" placeholder="Адрес эл.почты" required>
                 <label for="inputEmail">Адрес эл.почты</label>
             </div>
+                  <div class="g-recaptcha" data-sitekey="6LcjCp8UAAAAAL1BXJoJXGs9pN2LyIE5QY-TBXcD"></div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+              </form>
 
           </div>
           <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
               
-              
+            <form class="form-signin" action="send.php?act=reg" >
             <div class="form-label-group">
                 <input type="text" id="full_name" class="form-control" placeholder="Полное наименование организации" required autofocus>
                 <label for="full_name">Полное наименование организации</label>
@@ -90,8 +93,9 @@
                 <input type="text" id="fax" class="form-control" placeholder="Факс" required>
                 <label for="fax">Факс</label>
             </div>
-
-              
+                
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+          </form>       
           </div>
 
         </div>
@@ -119,9 +123,11 @@
 
 
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+
         <div class="mt10">
         Есть аккаунт? <a href="?act=reg">Войти</a>
         </div>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
-    </form>
+    
+    </div>
+ 
