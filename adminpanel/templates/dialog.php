@@ -54,29 +54,30 @@
         <div class="row" style="margin-top: 30px;" >
             <div class="col-4">
             
-                <form>
+                <form action="send.php?act=addUserToRNP" method="post">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Наименование/ФИО поставщика</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Наименование/ФИО ">
+                        <label for="exampleInputEmail1">ФИО поставщика</label>
+                    <input type="text" class="form-control smartfinder" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ФИО ">
+                        <ul class="search_result"></ul>
 
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">ИНН</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ИНН">
+                    <input type="text" class="form-control" name="inn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ИНН">
                    
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Причина для внесения в РНП</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Причина">
+                    <input type="text" class="form-control" name="reason" id="exampleInputPassword1" placeholder="Причина">
                   </div>
                   <div class="row" style="margin-top: 10px">
                       <div class="col-6">
                           <label for="exampleInputPassword1">Дата включения</label>
-                          <input type="date" class="form-control" placeholder="Дата включения" name="date_start">
+                          <input type="date" class="form-control"  placeholder="Дата включения" name="date_start">
                       </div>
                       <div class="col-6">
                           <label for="exampleInputPassword1">Дата исключения</label>
-                          <input type="date" class="form-control" placeholder="Дата исключения" name="date_end">
+                          <input type="date" class="form-control"  placeholder="Дата исключения" name="date_end">
                       </div>
                   </div>
                  
