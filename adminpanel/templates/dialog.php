@@ -15,18 +15,99 @@
           </button>
         </div>
       </div>
-        <div>
+        <div class="col-12">
             <div class="card">
               <div class="card-header">
-                Featured
+                 Не получается произввести оплату
+                <div style="float:right;color:#777;">№343</div>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="card-body">
+                        <div class="black_bold_title">
+                            <b> ОАО "АВТОВАЗ"</b>
+                          </div>
+                          <div class="item_date_block">
+                            <div class="gray_title">
+                                  20.05.2019 15:00
+                            </div>
+                          </div>
+                      </div>
+                      </div>
+                    <div class="col-9">
+                      <div class="card-body">
+                          <div class="" style="color:#555;">
+                          Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать.
+                          </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h3 class="h3">Добавление участника в список РНП</h3>
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+          </div>
+        <div class="row" style="margin-top: 30px;" >
+            <div class="col-4">
             
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Наименование/ФИО поставщика</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Наименование/ФИО ">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">ИНН</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ИНН">
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Причина для внесения в РНП</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Причина">
+                  </div>
+                  <div class="row" style="margin-top: 10px">
+                      <div class="col-6">
+                          <label for="exampleInputPassword1">Дата включения</label>
+                          <input type="date" class="form-control" placeholder="Дата включения" name="date_start">
+                      </div>
+                      <div class="col-6">
+                          <label for="exampleInputPassword1">Дата исключения</label>
+                          <input type="date" class="form-control" placeholder="Дата исключения" name="date_end">
+                      </div>
+                  </div>
+                 
+                  <button type="submit" class="btn btn-primary" style="margin-top:20px;">Добавить</button>
+                </form>
+            </div> 
+            <div class="col-8">
+                <div class="table_block ">
+                        <table class="table table-hover">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">#</th> 
+                              <th scope="col">Наименование/ФИО</th> 
+                              <th scope="col">ИНН</th>
+                              <th scope="col">Причина</th>
+                              <th scope="col">Дата включения</th>
+                              <th scope="col">Дата исключения</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Ломов А.Ю</td>  
+                              <td>349493030404</td>
+                              <td>Невыполнение в срок</td>
+                              <td>30.04.19</td>
+                              <td>30.04.20</td>
+                            </tr>
+                            </tbody>
+                    </table>
+            </div>
         </div>
     </div>
         
