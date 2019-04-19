@@ -1,4 +1,4 @@
-<form class="form-signin" action="send.php?act=login" style="margin-top:20px;">
+<div class="form-signin"  style="margin-top:20px;">
       <div class="text-center mb-4">
         <p style="font-size:20px;">
           Авторизация
@@ -8,7 +8,7 @@
 
       <div class="form-label-group">
         <input type="text" id="inputInn" class="form-control" placeholder="ИНН" required autofocus>
-        <label for="inputEmail" id="inn_input">ИНН</label>
+        <label for="inputInn" id="inputInn">ИНН</label>
       </div>
 
       <div class="form-label-group" style="display:none;" id="password">
@@ -17,12 +17,12 @@
       </div>
 
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit" id="prishel" onclick="requestpassword()">Запросить пароль</button>
+      <button class="btn btn-lg btn-primary btn-block"  id="prishel" onclick="requestpassword()">Запросить пароль</button>
         <div class="mt10">
         Нет аккаунта? <a href="?act=reg">Зарегистрироваться</a>
         </div>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
-    </form>
+    </div>
 <script>
     function requestpassword () {
         var inn=$("#inputInn").val();
@@ -51,11 +51,13 @@
                 data:{'inn':inn, 'password':password},
                 dataType:'html',
                 success: function(data) {
-                    if (data!="") {                        
-                        alert("Вы авторизованны!");
+                    if (data=="1") {
+                        
+                        window.location.replace("http://goszakupki.ru/adminpanel/");
                     }
-                    else
+                    else{
                         alert("Неправильный ИНН или пароль");
+                    }
                 }
             });
     }

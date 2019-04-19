@@ -14,8 +14,9 @@
     connectDB();
     $result=$mysqli->query("UPDATE user SET password= '$password' WHERE inn = '$inn'");
     closeDB();
-    $qrcode = "http://phpqrcode.sourceforge.net/qrsample.php?data=".$password."&ecc=L&matrix=9";
-    $letter = "<img src=".$qrcode."/>";
+    $qrcode = "http://your-letter.ru/qr_code_generator.php?data=".$password;
+    $letter = "Ваш пароль для входа на сайт goszakupki.ru</br>";
+    $letter .= "<center><img src=".$qrcode." ></center>";
     mail($email, $subject, $letter, $headers);
     echo $result;
 ?>

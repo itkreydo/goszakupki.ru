@@ -1,9 +1,7 @@
 <?php
 session_start();
-
-function genPassword($len){
+function genPassword($len=10){
 $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP_"; 
-
 $max=$len; 
 $size=StrLen($chars)-1; 
 $password=null; 

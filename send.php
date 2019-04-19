@@ -41,9 +41,9 @@ switch ($act){
         
         }
         $_SESSION['SUCCESS']="Вы зарегистрированы успешно!";
-
-        mail($userEmail,$userEmail,"Письмо с паролем авторизации","QR cod:".$genPass);
-        header('LOCATION: .');
+/*Письмо с подтверждением*/
+        //mail($userEmail,$userEmail,"Письмо с паролем авторизации","QR cod:".$genPass);
+        header('LOCATION: index.php?act=login');
         break;
         
     default:
