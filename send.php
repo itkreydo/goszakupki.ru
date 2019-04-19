@@ -47,7 +47,7 @@ switch ($act){
         $message = 'Здравствуйте! <br/> <br/> Сегодня '.date("d.m.Y", time()).', неким пользователем была произведена регистрация на сайте <a href="https://goszakupki.ru">'.$_SERVER['HTTP_HOST'].'</a> используя Ваш email. Если это были Вы, то, пожалуйста, подтвердите адрес вашей электронной почты, перейдя по этой ссылке: <a href="https://goszakupki.ru/send.php?act=token&token='.$token.'&email='.$userEmail.'">https://goszakupki.ru/'.$token.'</a> <br/> <br/> В противном случае, если это были не Вы, то, просто игнорируйте это письмо. <br/> <br/> <strong>Внимание!</strong> Ссылка действительна 24 часа. После чего Ваш аккаунт будет удален из базы.';        
         $email_admin= "admin@goszakupki.ru";        
         $headers = "FROM: $email_admin\r\nReply-to: $email_admin\r\nContent-type: text/html; charset=utf-8\r\n";        
-        mail($email, $subject, $message, $headers);
+        mail($userEmail, $subject, $message,$headers);
         
         $_SESSION['SUCCESS']="Подтвердите email адрес";
 /*Письмо с подтверждением*/

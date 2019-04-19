@@ -54,6 +54,8 @@
                     if (data=="1") {
                         
                         window.location.replace("http://goszakupki.ru/adminpanel/");
+                    } else if (data="2"){
+                        alert("Подтвердите ваш почтовый адрес");
                     }
                     else{
                         alert("Неправильный ИНН или пароль");
