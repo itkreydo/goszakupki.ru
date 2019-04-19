@@ -24,7 +24,7 @@
               <div class="card-body">
                   <div class="row">
                     <div class="col-3">
-                      <div class="card-body">
+                      <div class="">
                         <div class="black_bold_title">
                             <b> ОАО "АВТОВАЗ"</b>
                           </div>
@@ -36,7 +36,7 @@
                       </div>
                       </div>
                     <div class="col-9">
-                      <div class="card-body">
+                      <div class="">
                           <div class="" style="color:#555;">
                           Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать.
                           </div>
@@ -86,7 +86,7 @@
             <div class="col-8">
                 <div class="table_block ">
                         <table class="table table-hover">
-                          <thead class="thead-dark">
+                          <thead>
                             <tr>
                               <th scope="col">#</th> 
                               <th scope="col">Наименование/ФИО</th> 

@@ -8,9 +8,10 @@ switch ($act){
         require('templates/reg.php');
         require('../templates/footer.php');
     break;
-    case 'login':
+    case 'dialogDetail':
         require('templates/header.php');
-        require('templates/login.php');
+        require('templates/rightpanel.php');
+        require('templates/dialogDetail.php');
         require('templates/footer.php');
     break;
     default:
