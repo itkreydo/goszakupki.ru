@@ -7,5 +7,6 @@
         <script src="dashboard.js"></script>
 
 <div class="ws-root"></div>
+
 </body>
 </html>

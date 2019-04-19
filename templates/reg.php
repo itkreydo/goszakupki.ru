@@ -45,57 +45,57 @@
             <form class="form-signin" action="send.php?act=reg" method="post" >
                 <input type="hidden" name="user_type" value="urFace">
             <div class="form-label-group">
-                <input type="text" id="full_name" class="form-control" placeholder="Полное наименование организации" required autofocus>
+                <input type="text" id="full_name" name="full_title" class="form-control" placeholder="Полное наименование организации" required autofocus>
                 <label for="full_name">Полное наименование организации</label>
             </div>
               
             <div class="form-label-group">
-                <input type="text" id="name" class="form-control" placeholder="Сокращенное наименование организации" required autofocus>
+                <input type="text" id="name" name="title" class="form-control" placeholder="Сокращенное наименование организации" required autofocus>
                 <label for="name">Сокращенное наименование организации</label>
             </div>  
               
             <div class="form-label-group">
-                <input type="text" id="ogrn" class="form-control" placeholder="ОГРН" required autofocus>
+                <input type="text" id="ogrn" class="form-control" name="ogrn" placeholder="ОГРН" required autofocus>
                 <label for="ogrn">ОГРН</label>
             </div>  
               
             <div class="form-label-group">
-                <input type="text" id="inn_ur" class="form-control" placeholder="ИНН" required autofocus>
+                <input type="text" id="inn_ur" class="form-control" name="inn" placeholder="ИНН" required autofocus>
                 <label for="inn_ur">ИНН</label>
             </div>
 
             <div class="form-label-group">
-                <input type="text" id="kpp" class="form-control" placeholder="КПП" required>
+                <input type="text" id="kpp" class="form-control" name="kpp" placeholder="КПП" required>
                 <label for="kpp">КПП</label>
             </div>
               
             <div class="form-label-group">
-                <input type="email" id="address" class="form-control" placeholder="Адрес (место нахождения)" required>
+                <input type="email" id="address" class="form-control" name="address" placeholder="Адрес (место нахождения)" required>
                 <label for="address">Адрес (место нахождения)</label>
             </div>
               
               <p><b>Контактная информация</b></p>
 
             <div class="form-label-group">
-                <input type="text" id="mail" class="form-control" placeholder="Почтовый адрес" required>
+                <input type="text" id="mail" class="form-control" name="email" placeholder="Почтовый адрес" required>
                 <label for="mail">Почтовый адрес</label>
             </div>
               
             <div class="form-label-group">
-                <input type="text" id="contact" class="form-control" placeholder="Контактное лицо" required>
+                <input type="text" id="contact" class="form-control" name="fio" placeholder="Контактное лицо" required>
                 <label for="contact">Контактное лицо</label>
             </div>
               
             <div class="form-label-group">
-                <input type="text" id="phone" class="form-control" placeholder="Телефон" required>
+                <input type="text" id="phone" class="form-control" name="phone" placeholder="Телефон" required>
                 <label for="phone">Телефон</label>
             </div>
               
             <div class="form-label-group">
-                <input type="text" id="fax" class="form-control" placeholder="Факс" required>
+                <input type="text" id="fax" class="form-control"name="fax" placeholder="Факс" required>
                 <label for="fax">Факс</label>
             </div>
-                
+                <div class="g-recaptcha" data-sitekey="6LcjCp8UAAAAAL1BXJoJXGs9pN2LyIE5QY-TBXcD"></div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
           </form>       
           </div>

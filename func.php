@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function genPassword($len){
 $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP_"; 
 
@@ -27,5 +29,27 @@ function captchaConfirm(){
           $verify = file_get_contents($url, false, $context);
           $captcha_success=json_decode($verify);
     return($captcha_success->success);
+}
+function showInfo(){
+    if (isset($_SESSION['SUCCESS'])){
+        echo "
+        <div style='position:fixed;bottom:20px;right:20px;max-width:400px;' class='alert alert-success alert-dismissible fade show' role='alert'>
+          {$_SESSION['SUCCESS']}
+          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>";
+    }else if (isset($_SESSION['ERROR'])){
+        echo "
+        <div style='position:fixed;bottom:20px;right:20px;max-width:400px;' class='alert alert-danger alert-dismissible fade show' role='alert'>
+          {$_SESSION['ERROR']}
+          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>";
+    }
+    unset($_SESSION['SUCCESS']);
+    unset($_SESSION['ERROR']);
+    unset($_SESSION['INFO']);
 }
 ?>

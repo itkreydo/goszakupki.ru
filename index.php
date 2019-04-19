@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('func.php');
 $act=$_GET['act'];
 switch ($act){
     case 'reg':
