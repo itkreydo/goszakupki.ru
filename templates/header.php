@@ -10,6 +10,7 @@
       <link href="css/floating-labels.css" rel="stylesheet"/>
     <title>Госзакупки</title>
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="row" style="padding:10px;margin:0;border-bottom:1px solid #ccc">
