@@ -1,5 +1,39 @@
 <?php
 session_start();
+$mysqli=false;
+function connectDB () {
+    global $mysqli;
+    $mysqli=new mysqli("localhost","root","","goszakupki");
+    $mysqli->query("SET NAMES 'utf8mb4'");
+}
+
+function closeDB () {
+    global $mysqli;
+    $mysqli->close();
+}
+
+function resultToArray ($result) {
+    $array=array();
+    while(($row=$result->fetch_assoc())!=false)
+        $array[]=$row;
+    return $array;
+}
+
+function getUser($inn) {
+    global $mysqli;
+    connectDB();
+    $result=$mysqli->query("SELECT * FROM `user` WHERE `inn` = '$inn'");
+    closeDB();
+    if($result->num_rows==0)
+        return null;
+    else
+        return resultToArray ($result);
+}
+
+function generateRandomString($length = 10) {
+    return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+}
+
 function genPassword($len=10){
 $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP_"; 
 $max=$len; 
@@ -9,6 +43,7 @@ while($max--)
     $password.=$chars[rand(0,$size)]; 
 return $password;
 }
+
 function captchaConfirm(){
             $captchaKey = "6LcjCp8UAAAAAFonnxjSuk74QHaTebJpgN8ljvJ3";
           $response = $_POST["g-recaptcha-response"];
@@ -28,6 +63,8 @@ function captchaConfirm(){
           $captcha_success=json_decode($verify);
     return($captcha_success->success);
 }
+
+/*static dont usable*/
 function showInfo(){
     if (isset($_SESSION['SUCCESS'])){
         echo "

@@ -7,6 +7,6 @@
         <script src="dashboard.js"></script>
 
 <div class="ws-root"></div>
-
+<?showInfo();?>
 </body>
 </html>

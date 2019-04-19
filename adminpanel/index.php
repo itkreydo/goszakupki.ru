@@ -1,6 +1,7 @@
 <?php
 session_start();
 $act=$_GET['act'];
+require("../functions.php");
 switch ($act){
     case 'reg':
         require('../templates/header.php');
