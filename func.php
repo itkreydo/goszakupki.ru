@@ -50,4 +50,10 @@ function showInfo(){
     unset($_SESSION['ERROR']);
     unset($_SESSION['INFO']);
 }
+function resultToArray ($result) {
+    $array=array();
+    while(($row=$result->fetch_assoc())!=false)
+        $array[]=$row;
+    return $array;
+}
 ?>
