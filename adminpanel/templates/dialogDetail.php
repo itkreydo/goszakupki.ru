@@ -1,5 +1,4 @@
 
-
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
             <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
@@ -15,13 +14,10 @@
           </button>
         </div>
       </div>
-        <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                 Не получается произввести оплату
-                <div style="float:right;color:#777;">№343</div>
-              </div>
-              <div class="card-body">
+        <div class="">
+            <div class="row">
+            <div class="card" style="float:left; margin: 10px;">
+              <div class="card-body" style="float:right;color:#777; ">
                   <div class="row">
                     <div class="col-3">
                       <div class="">
@@ -35,7 +31,38 @@
                           </div>
                       </div>
                       </div>
+                     
                     <div class="col-9">
+                      <div class="">
+                          <div class="" style="color:#555;">
+                          Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать.
+                          </div>
+
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-3"></div>
+             <div class="card" style="float:right; margin: 10px;">
+              <div class="card-body" style="float:right;color:#777; ">
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="">
+                        <div class="black_bold_title">
+                            <b>Техподдержка</b>
+                          </div>
+                          <div class="item_date_block">
+                            <div class="gray_title">
+                                  20.05.2019 15:00
+                            </div>
+                          </div>
+                      </div>
+                      </div>
+                    <div class="col-6">
                       <div class="">
                           <div class="" style="color:#555;">
                           Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать.
@@ -44,6 +71,16 @@
                       </div>
                     </div>
                   </div>
+                </div>
+            </div>
+            </div>
+      
+            <div class="row" style="margin-top: 20px;padding-top:20px;border-top:1px dotted #ccc">   
+                <div class="col-8">
+                  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="2" placeholder="Write something here..."></textarea>
+                </div>
+                    <div class="col-4">
+                    <button type="submit" class="btn btn-primary" style="margin-top:20px; margin-left: 20px;">Отправить</button>
                 </div>
             </div>
         </div>
