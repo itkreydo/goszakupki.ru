@@ -14,68 +14,43 @@
 </div> 
 </div> 
 <div class=""> 
+
+<?for ($i=0;$i<count($result);$i++){
+    $isAdmin=($result[$i]['sender']=="Техподдержка")?TRUE:FALSE;
+    ?>
 <div class="row"> 
-<div class="card" style="float:left; margin: 10px; "> 
-<div class="card-body" style="float:right;color:#777; "> 
-<div class="row"> 
-<div class="col-3"> 
-<div class=""> 
-<div class="black_bold_title"> 
-<b> ОАО "АВТОВАЗ"</b> 
-</div> 
-<div class="item_date_block"> 
-<div class="gray_title"> 
-20.05.2019 15:00 
-</div> 
-</div> 
-</div> 
-</div> 
+    <?=($isAdmin)?"<div class='col-3'></div> ": "";?>
+    
+    <div class="col-9"> 
+        <div class="card" style="margin: 10px;<?=($isAdmin)?"background: #eff1ec;": "";?>"> 
+            <div class="card-body" style="float:right;color:#777; "> 
+                <div class="row"> 
+                    <div class="col-3"> 
+                    <div class=""> 
+                    <div class="black_bold_title"> 
+                    <b><?=($isAdmin)?"Техподдержка": $result[$i]['sender'];?></b> 
+                    </div> 
+                    <div class="item_date_block"> 
+                    <div class="gray_title"> 
+                    <?=$result[$i]['date']?> 
+                    </div> 
+                    </div> 
+                    </div> 
+                    </div> 
+                    <div class="col-6"> 
+                    <div class=""> 
+                    <div class="" style="color:#555;"> 
+                    <?=$result[$i]['text']?> 
+                    </div> 
 
-<div class="col-6"> 
-<div class=""> 
-<div class="" style="color:#555;"> 
-Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать. 
+                    </div> 
+                    </div> 
+                </div> 
+        </div> 
+        </div> 
+    </div> 
 </div> 
-
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-
-<div class="row"> 
-<div class="col-3"></div> 
-<div class="col-9"> 
-<div class="card" style="margin: 10px;background: #eff1ec;"> 
-<div class="card-body" style="float:right;color:#777; "> 
-<div class="row"> 
-<div class="col-3"> 
-<div class=""> 
-<div class="black_bold_title"> 
-<b>Техподдержка</b> 
-</div> 
-<div class="item_date_block"> 
-<div class="gray_title"> 
-20.05.2019 15:00 
-</div> 
-</div> 
-</div> 
-</div> 
-<div class="col-6"> 
-<div class=""> 
-<div class="" style="color:#555;"> 
-Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать. 
-</div> 
-
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-
+<?}?>
 <div class="row" style="margin-top: 20px;padding-top:20px;border-top:1px dotted #ccc"> 
 <div class="col-8"> 
 <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="2" placeholder="Write something here..."></textarea> 
