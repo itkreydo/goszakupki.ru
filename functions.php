@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli=false;
+
 function connectDB () {
     global $mysqli;
     $mysqli=new mysqli("localhost","root","","goszakupki");
@@ -62,6 +62,17 @@ function captchaConfirm(){
           $verify = file_get_contents($url, false, $context);
           $captcha_success=json_decode($verify);
     return($captcha_success->success);
+}
+
+function getRnpData($mysqli,$page,$limit){
+    $offset=($page-1)*$limit;
+    return resultToArray($mysqli->query("SELECT rnp.*,user.fio,user.inn FROM rnp JOIN user ON rnp.id_user = user.id LIMIT $offset,$limit"));
+}
+function getSupportDialogs($mysqli,$page,$limit){
+    $offset=($page-1)*$limit;
+    $newsql = "SELECT support.*,user.fio,user.inn,support_chat.text,support_chat.date FROM support JOIN user ON support.id_user = user.id JOIN (SELECT * FROM support_chat ORDER BY date DESC) AS support_chat ON support_chat.id_support=support.id GROUP BY support.id";
+    $oldsql="SELECT support.*,user.fio,user.inn,support_chat.text,support_chat.date FROM support JOIN support_chat ON support_chat.id_support = support.id JOIN user ON support.id_user = user.id ORDER BY support_chat.date DESC";
+    return resultToArray($mysqli->query($newsql));
 }
 
 /*static dont usable*/
