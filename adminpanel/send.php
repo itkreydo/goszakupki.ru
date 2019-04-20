@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("bd.php");
+require("../bd.php");
 require("../functions.php");
 $act = $_GET["act"];
 switch ($act){
@@ -12,9 +12,11 @@ switch ($act){
         $dateEnd=$_POST['date_end'];
         
         $userInfo = resultToArray($mysqli->query("SELECT * FROM user WHERE inn = '$userINN'"));
-        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH USER";header('LOCATION: .');}
+        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH USER";header('LOCATION: .');exit();}
+        $userID=$userInfo[0]['id'];
+        $mysqli->query("INSERT INTO rnp(id_user,reason,date_start,date_end) VALUES('$userID','$userReason','$dateStart','$dateEnd')");
         
-        
+        $_SESSION['SUCCESS']="Поставщик добавлен в Реестр.";
         header('LOCATION: .');
         break;
         
