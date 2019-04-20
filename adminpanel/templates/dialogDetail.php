@@ -46,8 +46,9 @@
             </div>
 
             <div class="row">
-            <div class="col-3"></div>
-             <div class="card" style="float:right; margin: 10px;background: #eff1ec;">
+                <div class="col-3"></div>
+                <div class="col-9">
+             <div class="card" style="margin: 10px;background: #eff1ec;">
               <div class="card-body" style="float:right;color:#777; ">
                   <div class="row">
                     <div class="col-3">
@@ -73,6 +74,7 @@
                   </div>
                 </div>
             </div>
+                </div>
             </div>
       
             <div class="row" style="margin-top: 20px;padding-top:20px;border-top:1px dotted #ccc">   
