@@ -16,7 +16,7 @@
       </div>
         <div class="">
             <div class="row">
-            <div class="card" style="float:left; margin: 10px;">
+            <div class="card" style="float:left; margin: 10px; ">
               <div class="card-body" style="float:right;color:#777; ">
                   <div class="row">
                     <div class="col-3">
@@ -32,7 +32,7 @@
                       </div>
                       </div>
                      
-                    <div class="col-9">
+                    <div class="col-6">
                       <div class="">
                           <div class="" style="color:#555;">
                           Здравствуйте! Не могу произвести оплату на сайте, выдает ошибку, подскажите, пожалуйста, что делать.
@@ -47,7 +47,7 @@
 
             <div class="row">
             <div class="col-3"></div>
-             <div class="card" style="float:right; margin: 10px;">
+             <div class="card" style="float:right; margin: 10px;background: #eff1ec;">
               <div class="card-body" style="float:right;color:#777; ">
                   <div class="row">
                     <div class="col-3">
