@@ -19,7 +19,11 @@ switch ($act){
         $_SESSION['SUCCESS']="Поставщик добавлен в Реестр.";
         header('LOCATION: .');
         break;
-        
+    case 'logout':
+        unset($_SESSION['id']);
+        unset($_SESSION['fio']);
+        header("LOCATION: ..");
+        break;
     default:
         break;
 }
