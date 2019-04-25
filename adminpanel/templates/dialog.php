@@ -17,7 +17,8 @@
       </div>
         <div class="col-12">
             <?for ($i=0;$i<count($supportDialodsData);$i++){?>
-            <div class="card">
+            <a href="?act=dialogDetail&support=<?=$supportDialodsData[$i]['id']?>" style="text-decoration:none; color:black;">
+            <div class="card" style="margin-bottom:30px;">
               <div class="card-header">
                  <?=$supportDialodsData[$i]['reason']?>
                 <div style="float:right;color:#777;">#<?=$supportDialodsData[$i]['id']?></div>
@@ -47,6 +48,7 @@
                   </div>
                 </div>
             </div>
+                </a>
             <?}?>
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h3 class="h3">Добавление участника в список РНП</h3>
