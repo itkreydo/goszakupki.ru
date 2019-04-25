@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('func.php');
+require("bd.php");
+require("functions.php");
 $act=$_GET['act'];
 switch ($act){
     case 'reg':
@@ -14,6 +15,9 @@ switch ($act){
         require('templates/footer.php');
     break;
     default:
+        connectDB();
+        $orgZakupki=resultToArray($mysqli->query("SELECT * FROM gosorder"));
+        closeDB();
         require('templates/header.php');
         require('templates/main.php');
         require('templates/footer.php');

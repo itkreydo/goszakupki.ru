@@ -1,4 +1,5 @@
 <?php
+    require("../bd.php");
     require_once "../functions.php";
     $user=getUser($_POST['inn']);
     if($user==null) {

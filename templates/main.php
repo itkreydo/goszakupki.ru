@@ -17,88 +17,92 @@
           </div>
           <div class="inner_container">
           <div class="row body_box" >
-              <div class="col-12">
-                    <div class="card">
-  <div class="card-header">
-      Закупка мотобайков<div style="float:right;color:#777;">№8475</div>
-  </div>
-<div class="row">
-    <div class="col-3">
-      <div class="card-body">
-        <div class="black_bold_title">
-              Электронный аукцион
-          </div>
-          <div class="item_date_block">
-                <div class="gray_title">
-                  Дата размещения
-              </div>
-              <div class="">
-              20.05.2019 15:00
-              </div>
-              <div class="gray_title">
-                  Дата окончания
-              </div>
-              <div class="">
-              28.05.2019 14:00
-              </div>
-          </div>
-          <div class="item_date_block">
-          <div class="gray_title">
-              Начальная цена
-          </div>
-          <div class="cost_value">
-              123 734.<span style="font-size:14px;">04 </span>
-          </div>
-            <div class="gray_title">
-              Российский рубль
-          </div>
-          </div>
-     
-      </div>
-    </div>
-    <div class="col-9">
-      <div class="card-body">
-              <a class="" href="">
-              №879875876859
-              </a>
-            <div class="gray_title mt10" >
-                  Заказчик
-              </div>
-              <div class="" style="color:#555;">
-              СЛЕДСТВЕННОЕ УПРАВЛЕНИЕ СЛЕДСТВЕННОГО КОМИТЕТА РОССИЙСКОЙ ФЕДЕРАЦИИ ПО ЧУКОТСКОМУ АВТОНОМНОМУ ОКРУГУ
-              </div>
-            <div class="gray_title">
-                  Объект закупки
-              </div>
-              <div class="" style="color:#555;">
-              Поставка канцелярских товаров и принадлежностей
-              </div>
-                <div class="gray_title mt10" >
-                  Идентификационный код закупки(ИКЗ)
-              </div>
-              <div class="" style="color:#555;">
-              191870901347787090100100280010000244
-              </div>
-          <div class="item_button_block mt10 row" >
-              <div class="col-6" style="text-align:left;">
-            <div class="gray_title " >
-                  Осталось до конца подачи заявок
-              </div>
-              <div class="" style="color:#555;">
-              2 дня 12 часов
-              </div>
-              </div>
-              <div class="col-6" style="text-align:right;">
-                   <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal">Отправить заявку</button>
-              </div>
 
-              </div>
-      </div>
-    </div>
+    <div class="col-12">
+            <?for ($i=0;$i<count($orgZakupki);$i++){?>
+                <div class="card">
+                  <div class="card-header">
+                      Закупка мотобайков<div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
+                  </div>
+                <div class="row">
+                    <div class="col-3">
+                      <div class="card-body">
+                        <div class="black_bold_title">
+                              Электронный аукцион
+                          </div>
+                          <div class="item_date_block">
+                                <div class="gray_title">
+                                  Дата размещения
+                              </div>
+                              <div class="">
+                              <?=$orgZakupki[$i]["date_start"]?>
+                              </div>
+                              <div class="gray_title">
+                                  Дата окончания
+                              </div>
+                              <div class="">
+                              <?=$orgZakupki[$i]["date_end"]?>
+                              </div>
+                          </div>
+                          <div class="item_date_block">
+                          <div class="gray_title">
+                              Начальная цена
+                          </div>
+                          <div class="cost_value">
+                              <?=$orgZakupki[$i]["max_price"]?><span style="font-size:14px;">.00 </span>
+                          </div>
+                            <div class="gray_title">
+                              <?=$orgZakupki[$i]["valuta"]?>
+                          </div>
+                          </div>
+
+                      </div>
+                    </div>
+                    <div class="col-9">
+                      <div class="card-body">
+                              <a class="" href="">
+                              №<?=$orgZakupki[$i]["id"]?>
+                              </a>
+                            <div class="gray_title mt10" >
+                                  Заказчик
+                              </div>
+                              <div class="" style="color:#555;">
+                              <?=$_SESSION["gos_title"]?>
+                              </div>
+                            <div class="gray_title">
+                                  Объект закупки
+                              </div>
+                              <div class="" style="color:#555;">
+                              <?=$orgZakupki[$i]["description"]?>
+                              </div>
+                                <div class="gray_title mt10" >
+                                  Идентификационный код закупки(ИКЗ)
+                              </div>
+                              <div class="" style="color:#555;">
+                              <?=$orgZakupki[$i]["id"]?><?=$orgZakupki[$i]["id_org"]?>
+                              </div>
+                          <div class="item_button_block mt10 row" >
+                              <div class="col-6" style="text-align:left;">
+                            <div class="gray_title " >
+                                  Осталось до конца подачи заявок
+                              </div>
+                              <div class="" style="color:#555;">
+                                <?=date_diff(new DateTime(), new DateTime($orgZakupki[$i]["date_end"]))->days?> деней <?=date_diff(new DateTime(), new DateTime($orgZakupki[$i]["date_end"]))->h?> часов
+                              </div>
+                              </div>
+                              <div class="col-6" style="text-align:right;">
+                                   <button type="button" class="btn btn-primary" onclick="modal(<?=$orgZakupki[$i]["id"]?>)" data-toggle="modal" data-target="#myModal">Отправить заявку</button>
+                              </div>
+
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+            <?}?>
+        </div>
 </div>
 </div>
-              </div>
-          </div>
 <div class="mt10">
               <nav aria-label="Page navigation example ">
   <ul class="pagination justify-content-center">
@@ -115,7 +119,6 @@
 </nav>
     </div>
           </div>
-      </div>
 <!-- Модальное окно -->  
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -128,9 +131,9 @@
       </div>
     <form action = " " enctype="multipart/form-data" method="post"> 
       <div class="modal-body">
-              <div style="margin-top: 10px;">ЗАКАЗЧИК: </div>
-              <div style="margin-top: 10px;">ОБЪЕКТ ЗАКАЗА: </div>
-              <div style="margin-top: 10px;">ОТПРАВИТЕЛЬ: </div>
+              <div style="margin-top: 10px;" id="zakazchik">ЗАКАЗЧИК: </div>
+              <div style="margin-top: 10px;" id="zakaz">ОБЪЕКТ ЗАКАЗА: </div>
+              <div style="margin-top: 10px;" id="otpravutel">ОТПРАВИТЕЛЬ: </div>
           
               <div class="row" style="margin-top: 10px">
                   <div class="col">
@@ -156,6 +159,25 @@
        
        
 
-       
+<script>
+    function modal(id) {
+        $.ajax({
+                url:'/ajax/order.php',
+                type:'POST',
+                cache:false,
+                data:{'id':id},
+                dataType:'json',
+                success: function(data) {
+                    if (data!="") {
+                        $("#otpravutel").text("ОТПРАВИТЕЛЬ: <?=$_SESSION["fio"]?>");
+                        $("#zakazchik").text("ЗАКАЗЧИК: "+data.zakazchik);
+                        $("#zakaz").text("ОБЪЕКТ ЗАКАЗА: "+data.zakaz);
+                    }
+                    else
+                        alert("Ошибка!");
+                }
+            });
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>  
