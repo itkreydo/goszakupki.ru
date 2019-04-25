@@ -71,7 +71,11 @@ function getRnpData($mysqli,$page,$limit){
 function getSupportDialogs($mysqli,$page,$limit){
     $offset=($page-1)*$limit;
     $newsql = "SELECT support.*,user.fio,user.inn,support_chat.text,support_chat.date FROM support JOIN user ON support.id_user = user.id JOIN (SELECT * FROM support_chat ORDER BY date DESC) AS support_chat ON support_chat.id_support=support.id GROUP BY support.id";
-    $oldsql="SELECT support.*,user.fio,user.inn,support_chat.text,support_chat.date FROM support JOIN support_chat ON support_chat.id_support = support.id JOIN user ON support.id_user = user.id ORDER BY support_chat.date DESC";
+    return resultToArray($mysqli->query($newsql));
+}
+function getOrgZakupki($mysqli,$page,$limit){
+    $offset=($page-1)*$limit;
+    $newsql = "SELECT * FROM gosorder WHERE id_org = {$_SESSION['gos']}";
     return resultToArray($mysqli->query($newsql));
 }
 
@@ -97,5 +101,23 @@ function showInfo(){
     unset($_SESSION['SUCCESS']);
     unset($_SESSION['ERROR']);
     unset($_SESSION['INFO']);
+}
+function isAdminAuthorized(){
+    if (isset($_SESSION['admin']))
+        return true;
+    else
+        return false;
+}
+function isUserAuthorized(){
+    if (isset($_SESSION['user']))
+        return true;
+    else
+        return false;
+}
+function isGosAuthorized(){
+    if (isset($_SESSION['gos']))
+        return true;
+    else
+        return false;
 }
 ?>

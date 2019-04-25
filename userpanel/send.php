@@ -24,19 +24,17 @@ switch ($act){
         $userPassword=$_POST['password'];
 
         $userInfo = resultToArray($mysqli->query("SELECT * FROM admin WHERE login = '$userLogin'"));
-        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH USER";header('LOCATION: .');exit();}
+        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH USER";header('LOCATION: index.php?act=login');exit();}
         if ($userInfo[0]['password']!=$userPassword){
-            $_SESSION['ERROR']="WRONG PASSWORD";header('LOCATION: .');exit();
+            $_SESSION['ERROR']="WRONG PASSWORD";header('LOCATION: index.php?act=login');exit();
         }
 
         $_SESSION['SUCCESS']="Добро пожаловать, ".$userInfo[0]["fio"];
-        $_SESSION['admin'] = $userInfo[0]["id"];
-        $_SESSION['admin_fio'] = $userInfo[0]["fio"];
         header('LOCATION: .');
         break;
     case 'logout':
-        unset($_SESSION['admin_fio']);
-        unset($_SESSION['admin']);
+        unset($_SESSION['id']);
+        unset($_SESSION['fio']);
         header("LOCATION: ..");
         break;
     default:

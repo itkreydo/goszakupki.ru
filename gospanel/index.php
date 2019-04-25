@@ -17,16 +17,7 @@ switch ($act){
         require('templates/dialogDetail.php');
         require('templates/footer.php');
     break;
-        case 'rnp':
-        $page=1;
-        $limit=20;
-        if (isset($_GET['page']))
-            $page=$_GET['page'];
-        if (isset($_GET['limit']))
-            $limit=$_GET['limit'];
-        $rnpData = getRnpData($mysqli,$page,$limit);
-        $numEntryesRnp = resultToArray($mysqli->query("SELECT count(*) as num FROM rnp"))[0]['num'];
-        $rnpPagesNum=ceil($numEntryesRnp/$limit);
+        case 'createOrder':
         require('templates/header.php');
         require('templates/rightpanel.php');
         require('templates/rnp.php');
@@ -38,7 +29,7 @@ switch ($act){
         showInfo();
     break;
     default:
-        if (isAdminAuthorized()){
+        if (isGosAuthorized()){
             $page=1;
             $limit=20;
             if (isset($_GET['page']))
@@ -46,14 +37,12 @@ switch ($act){
             if (isset($_GET['limit']))
                 $limit=$_GET['limit'];
 
-            $supportDialodsData = getSupportDialogs($mysqli,$page,$limit);
-            $rnpData = getRnpData($mysqli,$page,$limit);
-            $numEntryesRnp = resultToArray($mysqli->query("SELECT count(*) as num FROM rnp"))[0]['num'];
-            $rnpPagesNum=ceil($numEntryesRnp/$limit);
-
+            $orgZakupki = getOrgZakupki($mysqli,$page,$limit);
+            $numEntryGosOrder = resultToArray($mysqli->query("SELECT count(*) as num FROM gosorder WHERE id_org='{$_SESSION['gos']}'"))[0]['num'];
+            $orderPagesNum=ceil($numEntryGosOrder/$limit);
             require('templates/header.php');
             require('templates/rightpanel.php');
-            require('templates/dialog.php');
+            require('templates/main.php');
             require('templates/footer.php');
         }else{
             require("templates/head.php");

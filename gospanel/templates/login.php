@@ -3,8 +3,8 @@
 <form class="form-signin" action="send.php?act=login" method="post">
     <center><img class="mb-4" src="../img/logo.png" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Панель управления</h1></center>
-  <label for="inputEmail" class="sr-only">Логин</label>
-  <input type="text" id="inputEmail" class="form-control" name="login" placeholder="Логин" required autofocus>
+  <label for="inputEmail" class="sr-only">ИНН</label>
+  <input type="text" id="inputEmail" class="form-control" name="login" placeholder="ИНН" required autofocus>
   <label for="inputPassword" class="sr-only">Пароль</label>
   <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required>
 

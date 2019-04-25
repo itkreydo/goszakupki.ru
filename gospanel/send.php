@@ -20,23 +20,23 @@ switch ($act){
         header('LOCATION: .');
         break;
     case 'login':
-        $userLogin=$_POST['login'];
+        $userINN=$_POST['login'];
         $userPassword=$_POST['password'];
 
-        $userInfo = resultToArray($mysqli->query("SELECT * FROM admin WHERE login = '$userLogin'"));
-        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH USER";header('LOCATION: .');exit();}
+        $userInfo = resultToArray($mysqli->query("SELECT * FROM orgs WHERE inn = '$userINN'"));
+        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH ORGANISATION";header('LOCATION: .');exit();}
         if ($userInfo[0]['password']!=$userPassword){
             $_SESSION['ERROR']="WRONG PASSWORD";header('LOCATION: .');exit();
         }
 
-        $_SESSION['SUCCESS']="Добро пожаловать, ".$userInfo[0]["fio"];
-        $_SESSION['admin'] = $userInfo[0]["id"];
-        $_SESSION['admin_fio'] = $userInfo[0]["fio"];
+        $_SESSION['SUCCESS']="Добро пожаловать, ".$userInfo[0]["title"];
+        $_SESSION['gos'] = $userInfo[0]["id"];
+        $_SESSION['gos_title'] = $userInfo[0]["title"];
         header('LOCATION: .');
         break;
     case 'logout':
-        unset($_SESSION['admin_fio']);
-        unset($_SESSION['admin']);
+        unset($_SESSION['gos_title']);
+        unset($_SESSION['gos']);
         header("LOCATION: ..");
         break;
     default:
