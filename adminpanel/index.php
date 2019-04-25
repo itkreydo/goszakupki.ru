@@ -9,6 +9,13 @@ switch ($act){
         require('templates/reg.php');
         require('../templates/footer.php');
     break;
+    case 'lk':
+
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/lk.php');
+        require('templates/footer.php');
+        break;
     case 'dialogDetail':
 
         require('templates/header.php');

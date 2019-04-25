@@ -89,7 +89,7 @@
               </div>
               </div>
               <div class="col-6" style="text-align:right;">
-                   <a href="#" class="btn btn-primary">Отправить заявку</a>
+                   <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal">Отправить заявку</button>
               </div>
 
               </div>
@@ -116,3 +116,46 @@
     </div>
           </div>
       </div>
+<!-- Модальное окно -->  
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Отправить заявку</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <form action = " " enctype="multipart/form-data" method="post"> 
+      <div class="modal-body">
+              <div style="margin-top: 10px;">ЗАКАЗЧИК: </div>
+              <div style="margin-top: 10px;">ОБЪЕКТ ЗАКАЗА: </div>
+              <div style="margin-top: 10px;">ОТПРАВИТЕЛЬ: </div>
+          
+              <div class="row" style="margin-top: 10px">
+                  <div class="col">
+                      <div>ПРЕДЛОЖЕННАЯ ЦЕНА:</div>
+                  </div>
+                  <div class="col">
+                      <input type="text" class="form-control" placeholder="Предложенная цена" name = "offer_price">
+                  </div>
+                  <div class="col">
+                      <div>руб.</div>
+                  </div>
+              </div>
+ 
+      </div>
+        
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" >Отправить заявку</button>
+      </div>
+    </form>
+    </div><!-- /.модальное окно-Содержание -->  
+  </div><!-- /.модальное окно-диалог --> 
+</div>    
+       
+       
+
+       
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>  
