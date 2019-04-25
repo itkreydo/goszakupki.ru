@@ -17,7 +17,8 @@ switch ($act){
         require('templates/footer.php');
         break;
     case 'dialogDetail':
-
+        $support = $_GET['support'];
+        $result = resultToArray($mysqli->query("SELECT support.reason, support_chat.* FROM support JOIN support_chat ON support.id=support_chat.id_support WHERE support.id = $support"));
         require('templates/header.php');
         require('templates/rightpanel.php');
         require('templates/dialogDetail.php');
