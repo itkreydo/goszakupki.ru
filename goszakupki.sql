@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 26 2019 г., 00:46
+-- Время создания: Апр 26 2019 г., 02:29
 -- Версия сервера: 5.5.53
 -- Версия PHP: 5.6.29
 
@@ -74,6 +74,28 @@ CREATE TABLE `chat` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `contract`
+--
+
+CREATE TABLE `contract` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contract`
+--
+
+INSERT INTO `contract` (`id`, `id_user`, `id_order`, `price`, `date`) VALUES
+(1, 1, 1, 140000, '2019-04-25 23:06:21'),
+(2, 2, 1, 120000, '2019-04-25 23:09:17');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `gosorder`
 --
 
@@ -94,7 +116,9 @@ CREATE TABLE `gosorder` (
 --
 
 INSERT INTO `gosorder` (`id`, `id_org`, `title`, `description`, `max_price`, `valuta`, `date_start`, `object_zakupki`, `date_end`) VALUES
-(1, 1, 'Закпка мотобайков', 'Закупить мотобайки на праздник 9 мая', 450000, 'RUB', '2019-04-24 21:00:00', '', '2019-04-29 21:00:00');
+(1, 1, 'Закпка мотобайков', 'Закупить мотобайки на праздник 9 мая', 450000, 'RUB', '2019-04-24 21:00:00', '', '2019-04-29 21:00:00'),
+(2, 1, 'Сайт для госзакупок', 'Необходимо создать крутой сайт госзакупок, чтобы авторизироваться через qr cod', 300000, 'RUB', '2019-04-25 22:13:18', '', '2019-05-05 21:00:00'),
+(3, 1, 'Название', 'Описание', 130000, 'RUB', '2019-04-25 22:19:45', '', '2019-04-29 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -279,6 +303,12 @@ ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `contract`
+--
+ALTER TABLE `contract`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `gosorder`
 --
 ALTER TABLE `gosorder`
@@ -340,10 +370,15 @@ ALTER TABLE `auction`
 ALTER TABLE `chat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT для таблицы `contract`
+--
+ALTER TABLE `contract`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT для таблицы `gosorder`
 --
 ALTER TABLE `gosorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `orgs`
 --

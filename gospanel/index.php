@@ -20,14 +20,25 @@ switch ($act){
         case 'createOrder':
         require('templates/header.php');
         require('templates/rightpanel.php');
-        require('templates/rnp.php');
+        require('templates/lk.php');
         require('templates/footer.php');
     break;
+    case 'orderDetail':
+        $id_order = $_GET['id'];
+        $orderDetail = resultToArray($mysqli->query("SELECT * FROM gosorder WHERE id = $id_order"));
+        $providersList = resultToArray($mysqli->query("SELECT contract.*,user.fio FROM contract JOIN user ON user.id = contract.id_user WHERE id_order = $id_order ORDER BY price"));
+        
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/orderDetail.php');
+        require('templates/footer.php');        
+        break;
     case 'login':
         require("templates/head.php");
         require("templates/login.php");
         showInfo();
     break;
+        
     default:
         if (isGosAuthorized()){
             $page=1;

@@ -20,9 +20,9 @@
       </div>
         <div class="col-12">
             <?for ($i=0;$i<count($orgZakupki);$i++){?>
-                <div class="card">
+                <div class="card" style="margin-bottom:20px;">
                   <div class="card-header">
-                      Закупка мотобайков<div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
+                      <?=$orgZakupki[$i]["title"]?><div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
                   </div>
                 <div class="row">
                     <div class="col-3">
@@ -91,7 +91,7 @@
                               </div>
                               </div>
                               <div class="col-6" style="text-align:right;">
-                                   <a href="#" class="btn btn-primary">Подробнее</a>
+                                   <a href="?act=orderDetail&id=<?=$orgZakupki[$i]["id"]?>" class="btn btn-primary">Подробнее</a>
                               </div>
 
                               </div>
@@ -101,6 +101,19 @@
                 </div>
             <?}?>
         </div>
+                    <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item <?=(($page==1) ? "disabled":"" )?>">
+                  <a class="page-link" href="?page=<?=$page-1?>&limit=<?=$limit?>" tabindex="-1" aria-disabled="true">Предыдущая</a>
+                </li>
+                  <?  for ($i=0;$i<$orderPagesNum;$i++){?>
+                <li class="page-item <?=(($page-1==$i) ? "active":"") ?>"><a class="page-link" href="?page=<?=($i+1)?>&limit=<?=$limit?>"><?=$i+1?></a></li>
+                  <?}?>
+                <li class="page-item <?=(($page==$orderPagesNum) ? "disabled":"") ?>">
+                  <a class="page-link " href="?page=<?=$page+1?>&limit=<?=$limit?>">Следующая</a>
+                </li>
+              </ul>
+            </nav>
         
     </div>
 </main>

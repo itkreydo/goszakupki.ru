@@ -75,7 +75,7 @@ function getSupportDialogs($mysqli,$page,$limit){
 }
 function getOrgZakupki($mysqli,$page,$limit){
     $offset=($page-1)*$limit;
-    $newsql = "SELECT * FROM gosorder WHERE id_org = {$_SESSION['gos']}";
+    $newsql = "SELECT * FROM gosorder WHERE id_org = {$_SESSION['gos']} LIMIT $offset, $limit";
     return resultToArray($mysqli->query($newsql));
 }
 

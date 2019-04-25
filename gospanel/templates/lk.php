@@ -9,10 +9,10 @@
           </div>
         <div class="row" style="margin-top: 30px;" >
             <div class="col-4">
-                <form action="send.php?act=addUserToRNP" method="post">
+                <form action="send.php?act=createOrder" method="post">
                     <div class="form-group">
                         <label>Объект закупки</label>
-                        <input type="text" class="form-control smartfinder" name="object" placeholder="Объект закупки">
+                        <input type="text" class="form-control smartfinder" name="title" placeholder="Объект закупки">
                     </div>
                     <div class="form-group">
                         <label >Описание закупки</label>
@@ -20,7 +20,7 @@
                     </div>
                   <div class="form-group">
                        <label >Начальная цена</label>
-                        <input type="text" class="form-control smartfinder" name="start_price" placeholder="Начальная цена">
+                        <input type="text" class="form-control smartfinder" name="max_price" placeholder="Начальная цена">
                   </div>
                   <div class="row" style="margin-top: 10px">
                       <div class="col-6">
@@ -33,7 +33,7 @@
                       </div>
                   </div>
                  
-                  <button type="submit" class="btn btn-primary" style="margin-top:20px;">Добавить</button>
+                  <button type="submit" class="btn btn-primary" style="margin-top:20px;">Опубликовать</button>
                 </form>
             </div> 
             <div class="col-8">

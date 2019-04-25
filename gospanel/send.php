@@ -19,6 +19,7 @@ switch ($act){
         $_SESSION['SUCCESS']="Поставщик добавлен в Реестр.";
         header('LOCATION: .');
         break;
+        
     case 'login':
         $userINN=$_POST['login'];
         $userPassword=$_POST['password'];
@@ -33,6 +34,20 @@ switch ($act){
         $_SESSION['gos'] = $userInfo[0]["id"];
         $_SESSION['gos_title'] = $userInfo[0]["title"];
         header('LOCATION: .');
+        break;
+    case 'createOrder':
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $max_price = $_POST['max_price'];
+        $date_end = $_POST['date_end'];
+        if ($mysqli->query("INSERT INTO gosorder(id_org,title,description,max_price,valuta,date_end) VALUES('{$_SESSION['gos']}','$title','$description','$max_price','RUB','$date_end')")){
+            $_SESSION['SUCCESS'] = "Закупка создана успешно!";
+            header('LOCATION: .');
+        }else{
+            $_SESSION['ERROR'] = "Закупка не добавлена, проверьте введённые данные";
+            header('LOCATION: .');
+        }
+        
         break;
     case 'logout':
         unset($_SESSION['gos_title']);
