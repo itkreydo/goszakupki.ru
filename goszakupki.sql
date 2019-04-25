@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 20 2019 г., 10:57
+-- Время создания: Апр 26 2019 г., 00:46
 -- Версия сервера: 5.5.53
 -- Версия PHP: 5.6.29
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- База данных: `goszakupki`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `fio` varchar(255) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `admin`
+--
+
+INSERT INTO `admin` (`id`, `fio`, `login`, `password`) VALUES
+(1, 'Порошин Леонид Аркадьевич', 'lenya', '123');
 
 -- --------------------------------------------------------
 
@@ -54,17 +74,27 @@ CREATE TABLE `chat` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `contract`
+-- Структура таблицы `gosorder`
 --
 
-CREATE TABLE `contract` (
+CREATE TABLE `gosorder` (
   `id` int(11) NOT NULL,
+  `id_org` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `max_price` double NOT NULL,
   `valuta` varchar(255) NOT NULL,
-  `date_start` date NOT NULL,
+  `date_start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `object_zakupki` varchar(255) NOT NULL,
-  `date_end` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date_end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Дамп данных таблицы `gosorder`
+--
+
+INSERT INTO `gosorder` (`id`, `id_org`, `title`, `description`, `max_price`, `valuta`, `date_start`, `object_zakupki`, `date_end`) VALUES
+(1, 1, 'Закпка мотобайков', 'Закупить мотобайки на праздник 9 мая', 450000, 'RUB', '2019-04-24 21:00:00', '', '2019-04-29 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -81,8 +111,16 @@ CREATE TABLE `orgs` (
   `adress` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `data_reg` date NOT NULL
+  `data_reg` date NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `orgs`
+--
+
+INSERT INTO `orgs` (`id`, `title`, `ogrn`, `inn`, `kpp`, `adress`, `phone`, `email`, `data_reg`, `password`) VALUES
+(1, 'АКЦИОНЕРНОЕ ОБЩЕСТВО \"ЧУКОТЭНЕРГО\"', '23423423432', '123', '348763287436', 'Адрес', '89733478834', 'chukotenergo@mail.ru', '2019-04-25', '12345');
 
 -- --------------------------------------------------------
 
@@ -104,7 +142,8 @@ CREATE TABLE `rnp` (
 
 INSERT INTO `rnp` (`id`, `id_user`, `date_start`, `date_end`, `reason`) VALUES
 (1, 13, '2019-04-20', '2019-05-31', 'Просто так'),
-(2, 1, '2019-04-20', '2019-04-30', 'Причина 2');
+(2, 1, '2019-04-20', '2019-04-30', 'Причина 2'),
+(3, 14, '2019-04-20', '2025-04-18', 'Невыполнены требования');
 
 -- --------------------------------------------------------
 
@@ -138,7 +177,7 @@ CREATE TABLE `support_chat` (
   `id` int(11) NOT NULL,
   `sender` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `date` date NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_support` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -147,8 +186,8 @@ CREATE TABLE `support_chat` (
 --
 
 INSERT INTO `support_chat` (`id`, `sender`, `text`, `date`, `id_support`) VALUES
-(1, '\"Пользователь\"', 'Ничего не работает, помогите!', '2019-07-31', 1),
-(2, '\"Пользователь\"', 'А темерь ячто-то нажал и всё сломалось, как подать заявку на гос заказ??', '2019-11-30', 1);
+(1, '\"Пользователь\"', 'Ничего не работает, помогите!', '2019-07-30 21:00:00', 1),
+(2, '\"Пользователь\"', 'А темерь ячто-то нажал и всё сломалось, как подать заявку на гос заказ??', '2019-11-29 21:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +241,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fio`, `inn`, `phone`, `type`, `email`, `password`, `date_reg`, `rnp`, `token`) VALUES
-(1, 'Крейдо Игорь Витальевич', '823276472', '', '', 'autodesk@list.ru', 'kudLlPUMwR', '2019-04-19', 0, ''),
+(1, 'Крейдо Игорь Витальевич', '823276472', '', '', 'autodesk@list.ru', '9yqKX26ZJU', '2019-04-19', 0, ''),
 (2, 'jzh f difj sd hf ', '82327647253465', '', 'fizFace', 'ksjdshfkjask@jdkjf.ru', '', '2019-04-19', 0, ''),
 (3, 'Крейдо Игорь Витальевич', '', '', 'urFace', 'asadsad@mail.ru', '', '2019-04-19', 0, ''),
 (4, 'Крейдо Игорь Витальевич', '', '', 'urFace', 'addr@list.ru', '', '2019-04-19', 0, ''),
@@ -214,11 +253,18 @@ INSERT INTO `user` (`id`, `fio`, `inn`, `phone`, `type`, `email`, `password`, `d
 (10, '123', '123', '', 'fizFace', 'autodesk@list.ru', '', '2019-04-19', 0, ''),
 (11, 'hello', '12345', '', 'fizFace', 'autodesk@list.ru', 'LQtANKyevT', '2019-04-19', 0, ''),
 (12, 'Шадрин Дмитрий Андреевич', '55', '', 'fizFace', 'shadrindmitry1337@gmail.com', 'zaMwrcJyZt', '2019-04-20', 0, 'b43d44bc65312efd819a3252c7304d34'),
-(13, 'Шадрин Дмитрий Андреевич', '777', '', 'fizFace', 'shadrindmitry1337@gmail.com', 'djGIH57i6O', '2019-04-20', 0, '1');
+(13, 'Шадрин Дмитрий Андреевич', '777', '', 'fizFace', 'shadrindmitry1337@gmail.com', 'djGIH57i6O', '2019-04-20', 0, '1'),
+(14, 'Гарифуллина Венера', '12345555', '', 'fizFace', 'venera060698@yandex.ru', '6zkJHPFTth', '2019-04-20', 0, '1');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `auction`
@@ -233,9 +279,9 @@ ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `contract`
+-- Индексы таблицы `gosorder`
 --
-ALTER TABLE `contract`
+ALTER TABLE `gosorder`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -279,6 +325,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT для таблицы `auction`
 --
 ALTER TABLE `auction`
@@ -289,20 +340,20 @@ ALTER TABLE `auction`
 ALTER TABLE `chat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `contract`
+-- AUTO_INCREMENT для таблицы `gosorder`
 --
-ALTER TABLE `contract`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `gosorder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `orgs`
 --
 ALTER TABLE `orgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `rnp`
 --
 ALTER TABLE `rnp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `support`
 --
@@ -317,7 +368,7 @@ ALTER TABLE `support_chat`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
