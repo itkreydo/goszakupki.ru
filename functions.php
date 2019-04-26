@@ -73,7 +73,13 @@ function getSupportDialogs($mysqli,$page,$limit){
     $newsql = "SELECT support.*,user.fio,user.inn,support_chat.text,support_chat.date FROM support JOIN user ON support.id_user = user.id JOIN (SELECT * FROM support_chat ORDER BY date DESC) AS support_chat ON support_chat.id_support=support.id GROUP BY support.id";
     return resultToArray($mysqli->query($newsql));
 }
+
 function getSupportDialogsGos($mysqli,$page,$limit,$id){
+    $offset=($page-1)*$limit;
+    $newsql = "SELECT support.*,orgs.title as fio,orgs.inn,support_chat.text,support_chat.date FROM support JOIN orgs ON support.id_user = orgs.id JOIN (SELECT * FROM support_chat ORDER BY date DESC) AS support_chat ON support_chat.id_support=support.id WHERE support.id_user = $id GROUP BY support.id";
+    return resultToArray($mysqli->query($newsql));
+}
+function getDialogsGos($mysqli,$page,$limit,$id){
     $offset=($page-1)*$limit;
     $newsql = "SELECT support.*,orgs.title as fio,orgs.inn,support_chat.text,support_chat.date FROM support JOIN orgs ON support.id_user = orgs.id JOIN (SELECT * FROM support_chat ORDER BY date DESC) AS support_chat ON support_chat.id_support=support.id WHERE support.id_user = $id GROUP BY support.id";
     return resultToArray($mysqli->query($newsql));

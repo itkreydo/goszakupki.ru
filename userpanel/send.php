@@ -19,22 +19,47 @@ switch ($act){
         $_SESSION['SUCCESS']="Поставщик добавлен в Реестр.";
         header('LOCATION: .');
         break;
+        
     case 'login':
-        $userLogin=$_POST['login'];
+        $userINN=$_POST['login'];
         $userPassword=$_POST['password'];
 
-        $userInfo = resultToArray($mysqli->query("SELECT * FROM admin WHERE login = '$userLogin'"));
-        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH USER";header('LOCATION: index.php?act=login');exit();}
+        $userInfo = resultToArray($mysqli->query("SELECT * FROM orgs WHERE inn = '$userINN'"));
+        if (count($userInfo)==0){$_SESSION['ERROR']="NO SUCH ORGANISATION";header('LOCATION: .');exit();}
         if ($userInfo[0]['password']!=$userPassword){
-            $_SESSION['ERROR']="WRONG PASSWORD";header('LOCATION: index.php?act=login');exit();
+            $_SESSION['ERROR']="WRONG PASSWORD";header('LOCATION: .');exit();
         }
 
-        $_SESSION['SUCCESS']="Добро пожаловать, ".$userInfo[0]["fio"];
+        $_SESSION['SUCCESS']="Добро пожаловать, ".$userInfo[0]["title"];
+        $_SESSION['gos'] = $userInfo[0]["id"];
+        $_SESSION['gos_title'] = $userInfo[0]["title"];
         header('LOCATION: .');
         break;
+    case 'newSupport':
+        $reason = $_POST['reason'];
+        $text = $_POST['text'];
+        $userID = $_SESSION['gos'];
+        $mysqli->query("INSERT INTO support(id_user,id_admin,reason) VALUES('$userID','1','$reason')");
+        $mysqli->query("INSERT INTO support_chat(sender,id_support,text) VALUES('1',$mysqli->insert_id,'$text')");
+        header("LOCATION index.php?act=sup");
+        break;
+    case 'createOrder':
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $max_price = $_POST['max_price'];
+        $date_end = $_POST['date_end'];
+        if ($mysqli->query("INSERT INTO gosorder(id_org,title,description,max_price,valuta,date_end) VALUES('{$_SESSION['gos']}','$title','$description','$max_price','RUB','$date_end')")){
+            $_SESSION['SUCCESS'] = "Закупка создана успешно!";
+            header('LOCATION: .');
+        }else{
+            $_SESSION['ERROR'] = "Закупка не добавлена, проверьте введённые данные";
+            header('LOCATION: .');
+        }
+        
+        break;
     case 'logout':
-        unset($_SESSION['id']);
-        unset($_SESSION['fio']);
+        unset($_SESSION['gos_title']);
+        unset($_SESSION['gos']);
         header("LOCATION: ..");
         break;
     default:

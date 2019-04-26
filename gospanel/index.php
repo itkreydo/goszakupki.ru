@@ -23,7 +23,24 @@ switch ($act){
         require('templates/lk.php');
         require('templates/footer.php');
     break;
+    case 'dialogs':
+        $title="Диалоги с поставщиками";
+        $page=1;
+            $limit=20;
+            if (isset($_GET['page']))
+                $page=$_GET['page'];
+            if (isset($_GET['limit']))
+                $limit=$_GET['limit'];
+
+            $DialodsData = getDialogsGos($mysqli,$page,$limit,$_SESSION['gos']);
+        
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/dialog.php');
+        require('templates/footer.php');
+    break;
     case 'sup':
+        $title="Диалоги с тех поддержкой";
         $page=1;
             $limit=20;
             if (isset($_GET['page']))
@@ -32,6 +49,7 @@ switch ($act){
                 $limit=$_GET['limit'];
 
             $supportDialodsData = getSupportDialogsGos($mysqli,$page,$limit,$_SESSION['gos']);
+        
         require('templates/header.php');
         require('templates/rightpanel.php');
         require('templates/dialog.php');

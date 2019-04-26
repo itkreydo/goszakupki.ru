@@ -17,42 +17,89 @@ switch ($act){
         require('templates/dialogDetail.php');
         require('templates/footer.php');
     break;
-        case 'rnp':
-        $page=1;
-        $limit=20;
-        if (isset($_GET['page']))
-            $page=$_GET['page'];
-        if (isset($_GET['limit']))
-            $limit=$_GET['limit'];
-        $rnpData = getRnpData($mysqli,$page,$limit);
-        $numEntryesRnp = resultToArray($mysqli->query("SELECT count(*) as num FROM rnp"))[0]['num'];
-        $rnpPagesNum=ceil($numEntryesRnp/$limit);
+        case 'createOrder':
         require('templates/header.php');
         require('templates/rightpanel.php');
-        require('templates/rnp.php');
+        require('templates/lk.php');
         require('templates/footer.php');
     break;
-    case 'login':
-        require("templates/head.php");
-        require("templates/login.php");
-    break;
-    default:
+    case 'dialogs':
+        $title="Диалоги с поставщиками";
         $page=1;
-        $limit=20;
-        if (isset($_GET['page']))
-            $page=$_GET['page'];
-        if (isset($_GET['limit']))
-            $limit=$_GET['limit'];
-        
-        $supportDialodsData = getSupportDialogs($mysqli,$page,$limit);
-        $rnpData = getRnpData($mysqli,$page,$limit);
-        $numEntryesRnp = resultToArray($mysqli->query("SELECT count(*) as num FROM rnp"))[0]['num'];
-        $rnpPagesNum=ceil($numEntryesRnp/$limit);
+            $limit=20;
+            if (isset($_GET['page']))
+                $page=$_GET['page'];
+            if (isset($_GET['limit']))
+                $limit=$_GET['limit'];
 
+            $DialodsData = getDialogsGos($mysqli,$page,$limit,$_SESSION['gos']);
+        
         require('templates/header.php');
         require('templates/rightpanel.php');
         require('templates/dialog.php');
         require('templates/footer.php');
+    break;
+    case 'sup':
+        $title="Диалоги с тех поддержкой";
+        $page=1;
+            $limit=20;
+            if (isset($_GET['page']))
+                $page=$_GET['page'];
+            if (isset($_GET['limit']))
+                $limit=$_GET['limit'];
+
+            $supportDialodsData = getSupportDialogsGos($mysqli,$page,$limit,$_SESSION['gos']);
+        
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/dialog.php');
+        require('templates/footer.php');
+    break;
+    case 'supportDetail':
+        $support = $_GET['support'];
+        $result = resultToArray($mysqli->query("SELECT support.reason, support_chat.* FROM support JOIN support_chat ON support.id=support_chat.id_support WHERE support.id = $support"));
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/dialogDetail.php');
+        require('templates/footer.php');
+    break;        
+    case 'orderDetail':
+        $id_order = $_GET['id'];
+        $orderDetail = resultToArray($mysqli->query("SELECT * FROM gosorder WHERE id = $id_order"));
+        $providersList = resultToArray($mysqli->query("SELECT contract.*,user.fio FROM contract JOIN user ON user.id = contract.id_user WHERE id_order = $id_order ORDER BY price"));
+        
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/orderDetail.php');
+        require('templates/footer.php');        
+        break;
+    case 'login':
+        require("templates/head.php");
+        require("templates/login.php");
+        showInfo();
+    break;
+        
+    default:
+        if (isGosAuthorized()){
+            $page=1;
+            $limit=20;
+            if (isset($_GET['page']))
+                $page=$_GET['page'];
+            if (isset($_GET['limit']))
+                $limit=$_GET['limit'];
+
+            $orgZakupki = getOrgZakupki($mysqli,$page,$limit);
+            $numEntryGosOrder = resultToArray($mysqli->query("SELECT count(*) as num FROM gosorder WHERE id_org='{$_SESSION['gos']}'"))[0]['num'];
+            $orderPagesNum=ceil($numEntryGosOrder/$limit);
+            require('templates/header.php');
+            require('templates/rightpanel.php');
+            require('templates/main.php');
+            require('templates/footer.php');
+        }else{
+            require("templates/head.php");
+            require("templates/login.php");
+            showInfo();
+        }
     break;
 }
 
