@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 26 2019 г., 02:29
+-- Время создания: Апр 26 2019 г., 11:07
 -- Версия сервера: 5.5.53
 -- Версия PHP: 5.6.29
 
@@ -64,12 +64,20 @@ CREATE TABLE `auction` (
 
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
-  `id_sender` int(11) NOT NULL,
-  `id_ recipient` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `message` text NOT NULL,
   `date` date NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `sender` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `chat`
+--
+
+INSERT INTO `chat` (`id`, `id_order`, `id_user`, `message`, `date`, `status`, `sender`) VALUES
+(1, 1, 1, 'Сообщение какое-то', '2019-04-26', '0', '1');
 
 -- --------------------------------------------------------
 
@@ -180,7 +188,7 @@ CREATE TABLE `support` (
   `id_user` int(11) NOT NULL,
   `id_admin` int(11) NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `date_created` date NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -189,7 +197,8 @@ CREATE TABLE `support` (
 --
 
 INSERT INTO `support` (`id`, `id_user`, `id_admin`, `reason`, `date_created`, `status`) VALUES
-(1, 1, 1, 'Не работает сайт, пропали данные', '2019-06-30', 0);
+(1, 1, 1, 'Не работает сайт, пропали данные', '2019-06-29 21:00:00', 0),
+(2, 1, 1, 'kljkljlk', '2019-04-26 07:05:51', 0);
 
 -- --------------------------------------------------------
 
@@ -210,8 +219,11 @@ CREATE TABLE `support_chat` (
 --
 
 INSERT INTO `support_chat` (`id`, `sender`, `text`, `date`, `id_support`) VALUES
-(1, '\"Пользователь\"', 'Ничего не работает, помогите!', '2019-07-30 21:00:00', 1),
-(2, '\"Пользователь\"', 'А темерь ячто-то нажал и всё сломалось, как подать заявку на гос заказ??', '2019-11-29 21:00:00', 1);
+(1, '1', 'Ничего не работает, помогите!', '2019-07-30 21:00:00', 1),
+(2, '1', 'А темерь ячто-то нажал и всё сломалось, как подать заявку на гос заказ??', '2019-11-29 21:00:00', 1),
+(3, '0', 'sdasd', '2019-04-26 06:37:52', 1),
+(4, '1', 'lkjlk            ', '2019-04-26 07:05:51', 2),
+(5, '1', 'чяячсчяс', '2019-04-26 07:28:54', 2);
 
 -- --------------------------------------------------------
 
@@ -368,7 +380,7 @@ ALTER TABLE `auction`
 -- AUTO_INCREMENT для таблицы `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `contract`
 --
@@ -393,12 +405,12 @@ ALTER TABLE `rnp`
 -- AUTO_INCREMENT для таблицы `support`
 --
 ALTER TABLE `support`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `support_chat`
 --
 ALTER TABLE `support_chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
