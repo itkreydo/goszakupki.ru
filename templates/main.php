@@ -40,7 +40,7 @@
                       <?=$orgZakupki[$i]["title"]?><div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
                   </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12 col-sm-3">
                       <div class="card-body">
                         <div class="black_bold_title">
                               Электронный аукцион
@@ -73,7 +73,7 @@
 
                       </div>
                     </div>
-                    <div class="col-9">
+                    <div class="col-12 col-sm-9">
                       <div class="card-body">
                               <a class="" href="">
                               №<?=$orgZakupki[$i]["id"]?>

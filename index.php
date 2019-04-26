@@ -31,14 +31,14 @@ switch ($act){
         if ($f==""){
         connectDB();
         $orgZakupki=resultToArray($mysqli->query("SELECT *,orgs.title as org_title FROM gosorder JOIN orgs ON orgs.id = gosorder.id_org LIMIT $offset,$limit"));
-        $orgPagesNum =ceil(count(resultToArray($mysqli->query("SELECT *,COUNT(*) as num FROM gosorder")))/$limit);
+        $orgPagesNum =ceil(count(resultToArray($mysqli->query("SELECT * FROM gosorder")))/$limit);
         closeDB();
 
         }else{
         connectDB();
         $orgZakupki=resultToArray($mysqli->query("SELECT * FROM gosorder WHERE title LIKE '%$f%' UNION SELECT * FROM gosorder WHERE id LIKE '%$f%' UNION SELECT gosorder.* FROM gosorder JOIN orgs ON orgs.id = gosorder.id_org WHERE orgs.title LIKE '%$f%' LIMIT $offset,$limit"));
         $orgPagesNum = count(resultToArray($mysqli->query("SELECT * FROM gosorder WHERE title LIKE '%$f%' UNION SELECT * FROM gosorder WHERE id LIKE '%$f%' UNION SELECT gosorder.* FROM gosorder JOIN orgs ON orgs.id = gosorder.id_org WHERE orgs.title LIKE '%$f%'")));
-        $orgPagesNum =ceil($orgPagesNum/$limit);
+        $orgPagesNum = ceil($orgPagesNum/$limit);
         closeDB();    
         }
         require('templates/header.php');
