@@ -23,6 +23,28 @@ switch ($act){
         require('templates/lk.php');
         require('templates/footer.php');
     break;
+    case 'sup':
+        $page=1;
+            $limit=20;
+            if (isset($_GET['page']))
+                $page=$_GET['page'];
+            if (isset($_GET['limit']))
+                $limit=$_GET['limit'];
+
+            $supportDialodsData = getSupportDialogsGos($mysqli,$page,$limit,$_SESSION['gos']);
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/dialog.php');
+        require('templates/footer.php');
+    break;
+    case 'supportDetail':
+        $support = $_GET['support'];
+        $result = resultToArray($mysqli->query("SELECT support.reason, support_chat.* FROM support JOIN support_chat ON support.id=support_chat.id_support WHERE support.id = $support"));
+        require('templates/header.php');
+        require('templates/rightpanel.php');
+        require('templates/dialogDetail.php');
+        require('templates/footer.php');
+    break;        
     case 'orderDetail':
         $id_order = $_GET['id'];
         $orderDetail = resultToArray($mysqli->query("SELECT * FROM gosorder WHERE id = $id_order"));

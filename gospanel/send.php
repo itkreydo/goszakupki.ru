@@ -35,6 +35,14 @@ switch ($act){
         $_SESSION['gos_title'] = $userInfo[0]["title"];
         header('LOCATION: .');
         break;
+    case 'newSupport':
+        $reason = $_POST['reason'];
+        $text = $_POST['text'];
+        $userID = $_SESSION['gos'];
+        $mysqli->query("INSERT INTO support(id_user,id_admin,reason) VALUES('$userID','1','$reason')");
+        $mysqli->query("INSERT INTO support_chat(sender,id_support,text) VALUES('1',$mysqli->insert_id,'$text')");
+        header("LOCATION index.php?act=sup");
+        break;
     case 'createOrder':
         $title = $_POST['title'];
         $description = $_POST['description'];

@@ -19,9 +19,9 @@
                         
         <div class="nav_header" style="text-align:right;text-decoration:none;">
 
-        <a class="p-2 text-dark" href="#">Закупки</a>
-        <a class="p-2 text-dark" href="#">Организации</a>
-        <a class="p-2 text-dark" href="#">Поставщики</a>
+        <a class="p-2 text-dark" href="?type=gosorder">Закупки</a>
+        <a class="p-2 text-dark" href="?type=orgs">Организации</a>
+        <a class="p-2 text-dark" href="?type=rnp">Поставщики</a>
         <a class="p-2 text-dark" href="#">Контакты</a>
         <a class="btn btn-outline-primary" style="margin-left:20px;" href="?act=login">Личный кабинет</a>
             

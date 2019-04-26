@@ -34,6 +34,7 @@
 
     <div class="col-12">
             <?for ($i=0;$i<count($orgZakupki);$i++){?>
+        <!--start card zakupka-->
                 <div class="card" style="margin-bottom:20px;">
                   <div class="card-header">
                       <?=$orgZakupki[$i]["title"]?><div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
@@ -81,7 +82,7 @@
                                   Заказчик
                               </div>
                               <div class="" style="color:#555;">
-                              <?=$_SESSION["gos_title"]?>
+                              <?=$orgZakupki[$i]["org_title"]?>
                               </div>
                             <div class="gray_title">
                                   Объект закупки
@@ -105,7 +106,9 @@
                               </div>
                               </div>
                               <div class="col-6" style="text-align:right;">
+                                  <?if (isset($_SESSION['id'])){?>
                                    <button type="button" class="btn btn-primary" onclick="modal(<?=$orgZakupki[$i]["id"]?>)" data-toggle="modal" data-target="#myModal">Отправить заявку</button>
+                                  <?}?>
                               </div>
 
                               </div>
@@ -113,6 +116,8 @@
                     </div>
                 </div>
                 </div>
+        <!--end card zakupka-->
+        
             <?}?>
         </div>
 </div>
@@ -163,17 +168,16 @@
       </div>
         
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" id="sendcontract" onclick="contrd()">Отправить заявку</button>
+        <button  class="btn btn-primary" id="sendcontract" onclick="countId()">Отправить заявку</button>
       </div>
     </div><!-- /.модальное окно-Содержание -->  
   </div><!-- /.модальное окно-диалог --> 
 </div>    
        
-       
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>  
 <script>
-</script>
-<script>
-    function contrd() {
+    function countId() {
         var cost=$("#money").val();
         $.ajax({
                 url:'/ajax/contract.php',
@@ -183,7 +187,7 @@
                 dataType:'html',
                 success: function(data) {
                     if (data!="") {
-                        $("myModal").css('display':'none');
+                        $("#myModal").css('display','none');
                         alert("Заявка принята!");
                     }
                     else
@@ -210,5 +214,3 @@
             });
     }
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>  
