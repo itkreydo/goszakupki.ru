@@ -94,7 +94,11 @@ function getOrgZakupki($mysqli,$page,$limit){
     $newsql = "SELECT * FROM gosorder WHERE id_org = {$_SESSION['gos']} LIMIT $offset, $limit";
     return resultToArray($mysqli->query($newsql));
 }
-
+function getOrgZakupkiUser($mysqli,$page,$limit, $id){
+    $offset=($page-1)*$limit;
+    $newsql = "SELECT gosorder.* FROM contract JOIN gosorder ON contract.id_order = gosorder.id WHERE contract.id_user = '$id' LIMIT $offset, $limit";
+    return resultToArray($mysqli->query($newsql));
+}
 /*static dont usable*/
 function showInfo(){
     if (isset($_SESSION['SUCCESS'])){

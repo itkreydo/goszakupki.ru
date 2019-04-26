@@ -88,7 +88,7 @@ switch ($act){
             if (isset($_GET['limit']))
                 $limit=$_GET['limit'];
 
-            $orgZakupki = getOrgZakupki($mysqli,$page,$limit);
+            $orgZakupki = getOrgZakupkiUser($mysqli,$page,$limit, $_SESSION['id']);
             $numEntryGosOrder = resultToArray($mysqli->query("SELECT count(*) as num FROM gosorder WHERE id_org='{$_SESSION['gos']}'"))[0]['num'];
             $orderPagesNum=ceil($numEntryGosOrder/$limit);
             require('templates/header.php');

@@ -10,6 +10,10 @@ switch ($act){
         require('templates/footer.php');
     break;
     case 'login':
+        if($_SESSION['id']!="") {
+            header("Location: /userpanel/");
+            exit;
+        }
         require('templates/header.php');
         require('templates/login.php');
         require('templates/footer.php');
