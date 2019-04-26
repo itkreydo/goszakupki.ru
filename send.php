@@ -68,6 +68,11 @@ switch ($act){
         }
         header('LOCATION: index.php');
         break;
+    case 'find':
+        $type = $_POST['type'];
+        $f = $_POST['f'];
+        
+        break;
     default:
         break;
 }

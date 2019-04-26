@@ -111,7 +111,7 @@
                   <a href="?page=<?=$page?>&limit=1" class="btn btn-secondary <?=(($limit==1) ? "active":"") ?>">1</a>
                     <a href="?page=<?=$page?>&limit=20" class="btn btn-secondary <?=(($limit==20) ? "active":"") ?>">20</a>
                   <a href="?page=<?=$page?>&limit=50" class="btn btn-secondary <?=(($limit==50) ? "active":"") ?>">50</a>
-                  <a href="?page=<?=$page?>&limit=100" class="btn btn-secondary <?=(($limit==1) ? "active":"") ?>">100</a>
+                  <a href="?page=<?=$page?>&limit=100" class="btn btn-secondary <?=(($limit==100) ? "active":"") ?>">100</a>
                 </div>
                     </div>
                 <div class="table_block ">

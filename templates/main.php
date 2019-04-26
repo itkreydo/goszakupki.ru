@@ -2,17 +2,31 @@
           <div class="inner_container">
           <div class="row search_box" style="margin-left:0px;margin-right:0px;">
               <div class="col-12">
-                <form>
+                <form  action="" method="GET">
                     <div class="input-group ">
-                  <input type="text" class="form-control" placeholder="Поиск по номеру закупки/названию/организации" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input type="hidden" name="page" value="<?=$page?>">
+                        <input type="hidden" name="limit" value="<?=$limit?>">
+                  <input type="text" class="form-control" name="f" placeholder="Поиск по номеру закупки/названию/организации" aria-label="Recipient's username" aria-describedby="button-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" tyle="border:1px solid #eee;" type="button" id="button-addon2">Найти</button>
+                    <button class="btn btn-outline-secondary"  type="submit" id="button-addon2">Найти</button>
                   </div>
                 </div>
                 </form>
               </div>
           </div>
-              Найдено 102 закупки.
+              <div class="row">
+              <div class="col-4" >Найдено <?=count($orgZakupki)?> закупки.</div>                
+              <div class="col-8" style="text-align:right;">
+                                    Выводить по: 
+                <div class="btn-group" role="group" aria-label="Basic example">
+
+                  <a href="?page=<?=$page?>&limit=1&f=<?=$f?>" class="btn btn-secondary <?=(($limit==1) ? "active":"") ?>">1</a>
+                    <a href="?page=<?=$page?>&limit=20&f=<?=$f?>" class="btn btn-secondary <?=(($limit==20) ? "active":"") ?>">20</a>
+                  <a href="?page=<?=$page?>&limit=50&f=<?=$f?>" class="btn btn-secondary <?=(($limit==50) ? "active":"") ?>">50</a>
+                  <a href="?page=<?=$page?>&limit=100&f=<?=$f?>" class="btn btn-secondary <?=(($limit==100) ? "active":"") ?>">100</a>
+                </div>
+                    </div>
+                  </div>
               <hr>
           </div>
           <div class="inner_container">
@@ -20,9 +34,9 @@
 
     <div class="col-12">
             <?for ($i=0;$i<count($orgZakupki);$i++){?>
-                <div class="card">
+                <div class="card" style="margin-bottom:20px;">
                   <div class="card-header">
-                      Закупка мотобайков<div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
+                      <?=$orgZakupki[$i]["title"]?><div style="float:right;color:#777;">№<?=$orgZakupki[$i]["id"]?></div>
                   </div>
                 <div class="row">
                     <div class="col-3">
@@ -104,19 +118,19 @@
 </div>
 </div>
 <div class="mt10">
-              <nav aria-label="Page navigation example ">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Предыдущая</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Следующая</a>
-    </li>
-  </ul>
-</nav>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item <?=(($page==1) ? "disabled":"" )?>">
+                  <a class="page-link" href="?page=<?=$page-1?>&limit=<?=$limit?>" tabindex="-1" aria-disabled="true">Предыдущая</a>
+                </li>
+                  <?  for ($i=0;$i<$orgPagesNum;$i++){?>
+                <li class="page-item <?=(($page-1==$i) ? "active":"") ?>"><a class="page-link" href="?page=<?=($i+1)?>&limit=<?=$limit?>&f=<?=$f?>"><?=$i+1?></a></li>
+                  <?}?>
+                <li class="page-item <?=(($page==$orgPagesNum) ? "disabled":"") ?>">
+                  <a class="page-link " href="?page=<?=$page+1?>&limit=<?=$limit?>&f=<?=$f?>">Следующая</a>
+                </li>
+              </ul>
+            </nav>
     </div>
           </div>
 <!-- Модальное окно -->  

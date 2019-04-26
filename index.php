@@ -15,9 +15,30 @@ switch ($act){
         require('templates/footer.php');
     break;
     default:
+        $type="gosorder";
+        $f="";
+        $page = 1;
+        $limit = 20;
+        if (isset($_GET['page']))
+            $page=$_GET['page'];
+        if (isset($_GET['limit']))
+            $limit=$_GET['limit'];
+        if (isset($_GET['type']))
+            $type=$_GET['type'];
+        if (isset($_GET['f']))
+            $f=$_GET['f'];
+        $offset=($page-1)*$limit;
+        if ($f==""){
         connectDB();
-        $orgZakupki=resultToArray($mysqli->query("SELECT * FROM gosorder"));
+        $orgZakupki=resultToArray($mysqli->query("SELECT *,COUNT(*) as num FROM gosorder LIMIT $offset,$limit"));
         closeDB();
+        }else{
+        connectDB();
+        $orgZakupki=resultToArray($mysqli->query("SELECT * FROM gosorder WHERE title LIKE '%$f%' UNION SELECT * FROM gosorder WHERE id LIKE '%$f%' UNION SELECT gosorder.* FROM gosorder JOIN orgs ON orgs.id = gosorder.id_org WHERE orgs.title LIKE '%$f%' LIMIT $offset,$limit"));
+        $orgPagesNum = count(resultToArray($mysqli->query("SELECT * FROM gosorder WHERE title LIKE '%$f%' UNION SELECT * FROM gosorder WHERE id LIKE '%$f%' UNION SELECT gosorder.* FROM gosorder JOIN orgs ON orgs.id = gosorder.id_org WHERE orgs.title LIKE '%$f%'")));
+        $orgPagesNum =ceil($orgPagesNum/$limit);
+        closeDB();    
+        }
         require('templates/header.php');
         require('templates/main.php');
         require('templates/footer.php');
