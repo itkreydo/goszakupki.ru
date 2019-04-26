@@ -4,11 +4,11 @@
     $id = $_POST["id"];
     $id_order = $_POST["id_order"];
     if($cost=="" || $id=="") {
-        echo "null";
+        echo "";
         exit;
     }
     connectDB();
-    $result=resultToArray($mysqli->query("INSERT INTO contract (`id_user`, `id_order`, `price`) VALUES ('$id', '$id_order', '$cost');"));
+    $result=$mysqli->query("INSERT INTO contract (`id_user`, `id_order`, `price`) VALUES ('$id', '$id_order', '$cost');");
     closeDB();
     echo "1";
 ?>

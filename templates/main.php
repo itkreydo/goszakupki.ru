@@ -187,7 +187,7 @@
                 dataType:'html',
                 success: function(data) {
                     if (data!="") {
-                        $("#myModal").css('display','none');
+                        $("#myModal").modal('toggle');
                         alert("Заявка принята!");
                     }
                     else
