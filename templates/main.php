@@ -143,7 +143,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form action = " " enctype="multipart/form-data" method="post"> 
       <div class="modal-body">
               <div style="margin-top: 10px;" id="zakazchik">ЗАКАЗЧИК: </div>
               <div style="margin-top: 10px;" id="zakaz">ОБЪЕКТ ЗАКАЗА: </div>
@@ -154,7 +153,7 @@
                       <div>ПРЕДЛОЖЕННАЯ ЦЕНА:</div>
                   </div>
                   <div class="col">
-                      <input type="text" class="form-control" placeholder="Предложенная цена" name = "offer_price">
+                      <input type="text" class="form-control" id="money" placeholder="Предложенная цена" name = "offer_price">
                   </div>
                   <div class="col">
                       <div>руб.</div>
@@ -164,16 +163,34 @@
       </div>
         
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" >Отправить заявку</button>
+        <button type="submit" class="btn btn-primary" id="sendcontract" onclick="contrd()">Отправить заявку</button>
       </div>
-    </form>
     </div><!-- /.модальное окно-Содержание -->  
   </div><!-- /.модальное окно-диалог --> 
 </div>    
        
        
-
 <script>
+</script>
+<script>
+    function contrd() {
+        var cost=$("#money").val();
+        $.ajax({
+                url:'/ajax/contract.php',
+                type:'POST',
+                cache:false,
+                data:{'id':"<?=$_SESSION['id']?>", 'cost':cost, 'id_order':"1"},
+                dataType:'html',
+                success: function(data) {
+                    if (data!="") {
+                        $("myModal").css('display':'none');
+                        alert("Заявка принята!");
+                    }
+                    else
+                        alert("Введите цену!");
+                }
+            });
+    }
     function modal(id) {
         $.ajax({
                 url:'/ajax/order.php',
