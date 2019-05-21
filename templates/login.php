@@ -53,7 +53,7 @@
                 success: function(data) {
                     if (data=="1") {
                         
-                        window.location.replace("http://goszakupki.ru/adminpanel/");
+                        window.location.replace("http://goszakupki.ru/userpanel/");
                     } else if (data="2"){
                         alert("Подтвердите ваш почтовый адрес");
                     }

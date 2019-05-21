@@ -7,6 +7,7 @@
       <link href="css/style.css" rel="stylesheet"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <link href="css/floating-labels.css" rel="stylesheet"/>
     <title>Госзакупки</title>
   </head>
@@ -21,7 +22,7 @@
         <a class="p-2 text-dark" href="#">Организации</a>
         <a class="p-2 text-dark" href="#">Поставщики</a>
         <a class="p-2 text-dark" href="#">Контакты</a>
-        <a class="btn btn-outline-primary" style="margin-left:20px;" href="#">Личный кабинет</a>
+        <a class="btn btn-outline-primary" style="margin-left:20px;" href="?act=login">Личный кабинет</a>
             
         </div>
     
